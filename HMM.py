@@ -35,17 +35,16 @@ class HiddenMarkov:
                 betas[i][t] = np.dot(np.multiply(A[i], [b[indexOfO] for b in B]), [beta[t + 1] for beta in betas])
                 realT = t + 1
                 realI = i + 1
-                print('beta%d(%d)=[sigma a%djbj(o%d)]beta%d(j)=(' % (realT, realI, realI, realT + 1, realT + 1),
-                      end='')
+                print 'beta%d(%d)=[sigma a%djbj(o%d)]beta%d(j)=(' % (realT, realI, realI, realT + 1, realT + 1)
                 for j in range(N):
-                    print("%.2f*%.2f*%.2f+" % (A[i][j], B[j][indexOfO], betas[j][t + 1]), end='')
+                    print "%.2f*%.2f*%.2f+" % (A[i][j], B[j][indexOfO], betas[j][t + 1])
                 print("0)=%.3f" % betas[i][t])
         # print(betas)
         indexOfO = V.index(O[0])
         P = np.dot(np.multiply(PI, [b[indexOfO] for b in B]), [beta[0] for beta in betas])
-        print("P(O|lambda)=", end="")
+        print "P(O|lambda)="
         for i in range(N):
-            print("%.1f*%.1f*%.5f+" % (PI[0][i], B[i][indexOfO], betas[i][0]), end="")
+            print "%.1f*%.1f*%.5f+" % (PI[0][i], B[i][indexOfO], betas[i][0])
         print("0=%f" % P)
 
     def viterbi(self, Q, V, A, B, O, PI):

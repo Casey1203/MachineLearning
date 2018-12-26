@@ -1,3 +1,4 @@
+#--*-- coding:utf-8
 import numpy as np
 
 class SingleDecisionTree:   #决策树桩
